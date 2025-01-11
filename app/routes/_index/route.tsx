@@ -1,6 +1,6 @@
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { getUrlOriginWithPath } from '~/utils';
-import styles from './_index.module.scss';
+import { MainChat } from '../../../src/components/main-chat/main-chat';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
@@ -8,12 +8,8 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 
 export default function HomePage() {
     return (
-        <div className={styles.root}>
-            <h2 className={styles.title}>Welcome To App Homepage 🎉</h2>
-            <span className={styles.paragraph}>
-                Drag here elements from the Add Elements Panel
-                <br /> and style them using the Styles panel
-            </span>
+        <div>
+            <MainChat />
         </div>
     );
 }
