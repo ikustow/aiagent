@@ -30,6 +30,7 @@ The project features an AI assistant designed to help users analyze data and for
 
 ![seq.png](readme_assets/seq.png)
 ### Integration with BigQuery
+![bqdemo-ezgif.com-video-to-gif-converter.gif](readme_assets/bqdemo-ezgif.com-video-to-gif-converter.gif)
 To integrate with BigQuery, a specialized BigQuery tool is utilized. Based on the context, the tool determines the need to construct a query within the dataset. The query is then generated and sent to a cloud function, where it undergoes validation and execution. Once the data is retrieved, the agent processes it into a user-friendly format and, if required, provides actionable insights or conclusions.
 
 Output example
@@ -38,6 +39,7 @@ Output example
 `﻿SELECT * FROM datastename.orders`
 ```
 ### Integration with Prediction Service
+![predictdemo-ezgif.com-video-to-gif-converter.gif](readme_assets/predictdemo-ezgif.com-video-to-gif-converter.gif)
 The **Prediction Tool** is designed to handle requests for future sales forecasts. This tool interacts with a dedicated prediction service to retrieve expected parameters and insights for specified time periods.
 
 Output example
