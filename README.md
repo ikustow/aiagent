@@ -36,7 +36,7 @@ To integrate with BigQuery, a specialized BigQuery tool is utilized. Based on th
 Output example
 
 ```
-`﻿SELECT * FROM datastename.orders`
+`﻿SELECT * FROM datasetename.orders`
 ```
 ### Integration with Prediction Service
 ![predictdemo-ezgif.com-video-to-gif-converter.gif](readme_assets/predictdemo-ezgif.com-video-to-gif-converter.gif)
