@@ -1,29 +1,49 @@
-<div align="center">  
-    <img height="50" src="./src/assets/svg/codux.svg">  
-    <h1>Remix template for Codux</h1>
-</div>
+# Product Analyst AI Assistant PoC Project
 
-### A Visual IDE for React Projects
+## Overview
+The project features an AI assistant designed to help users analyze data and forecast key business metrics. The assistant integrates with various tools to retrieve, process, and analyze data, providing users with a seamless and intuitive interaction interface.
 
-Codux is an all-in-one visual development environment. Whether you’re starting a new app, creating components, or editing an existing project, every visual change you make reflects instantly in the code and vice versa. To learn more about Codux, visit our website - [https://www.codux.com/](https://www.codux.com/)
+## Key Features
+| Feature | Description |
+| ----- | ----- |
+| Interactive Chat with the Agent | <p>Users can send requests through an intuitive chat interface.</p><p>The agent processes queries and responds using the capabilities of the OpenAI API.</p><p>The agent is configured to handle requests related to data analysis, forecasting, and BI reporting.</p> |
+| Integration with BigQuery via Cloud Functions | <p>A tool interacts with Google BigQuery to build SQL queries.</p><p>Query results are used to generate reports, analyze data, or provide visualizations.</p><p>The process is automated using Google Cloud Functions, ensuring high performance and flexibility.</p> |
+| Custom Sales Forecasting Service | <p>A tool communicates with a custom service to analyze historical data and provide sales forecasts.</p><p>Forecasts include overall order volume predictions as well as detailed insights by product categories.</p><p>The service is trained on specific business data and integrated with the agent via n8n.</p> |
+| Backend Managed with n8n | <p>The entire request-handling logic is configured using n8n, a powerful workflow automation tool.</p><p>n8n connects OpenAI API, Google Cloud Functions, and the custom forecasting service, serving as a unified control point for interactions.</p><p>Ensures scalability and ease of adding new integrations.</p> |
+| Machine Learning with OpenAI API | <p>The assistant is trained to understand complex business queries and respond with contextually accurate and analytical answers.</p><p>OpenAI powers the assistant’s ability to provide insightful and relevant responses.</p> |
+## Use Cases
+- Building SQL queries for analyzing sales.
+- Generating sales forecasts for future periods.
+- Retrieving detailed data by products,  sales, and other metrics.
+## Architecture overview
 
-This project was bootstrapped with [`Remix`](https://remix.run/).
+![arch.png](readme_assets/arch.png)
 
-It includes a single React component to start your project with, a sample [`codux.config.json`](codux.config.json) with preconfigured keys, a `package.json` file to describe the project's packages and dependencies, and a folder and component structure to put everything neatly in its place.
+| **Aspect** | Tool | PL |
+| ----- | ----- | ----- |
+| Frontend | Codux | Typescript |
+| Backend | n8n | JS (in custom code nodes)  |
+| GCP | Cloud functions | Typescript |
+| Database | BigQuery | SQL |
+| Prediction service | Custom code | Typescript |
+## Demo
 
-- Edit, render and compose apps that make use of **`React`**-based components.
-- Create components with **`TypeScript`**, **`SCSS`** and **`CSS Modules`** support.
-- Visually edit in real-time and in an isolated environment.
+![seq.png](readme_assets/seq.png)
+### Integration with BigQuery
+To integrate with BigQuery, a specialized BigQuery tool is utilized. Based on the context, the tool determines the need to construct a query within the dataset. The query is then generated and sent to a cloud function, where it undergoes validation and execution. Once the data is retrieved, the agent processes it into a user-friendly format and, if required, provides actionable insights or conclusions.
 
-### Available Scripts
+Output example
 
-In the project directory, you can run:
+```
+`﻿SELECT * FROM datastename.orders`
+```
+### Integration with Prediction Service
+The **Prediction Tool** is designed to handle requests for future sales forecasts. This tool interacts with a dedicated prediction service to retrieve expected parameters and insights for specified time periods.
 
-### `npm run build`
+Output example
 
-Build the application in production mode into a folder named `dist`. This folder can be served using any HTTP server.
+```
+{ "prediction_type": "month", "quantity": 2 }
+```
 
-### `npm run dev`
 
-Start dev server.\
-Open [http://localhost:5173/](http://localhost:5173/) to view it in the browser.
