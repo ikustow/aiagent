@@ -29,6 +29,12 @@ The project features an AI assistant designed to help users analyze data and for
 ## Demo
 
 ![seq.png](readme_assets/seq.png)
+# n8n
+![n8n.png](readme_assets/n8n.png)
+
+# UI
+![ui.png](readme_assets/ui.png)
+
 ### Integration with BigQuery
 ![bqdemo-ezgif.com-video-to-gif-converter.gif](readme_assets/bqdemo-ezgif.com-video-to-gif-converter.gif)
 To integrate with BigQuery, a specialized BigQuery tool is utilized. Based on the context, the tool determines the need to construct a query within the dataset. The query is then generated and sent to a cloud function, where it undergoes validation and execution. Once the data is retrieved, the agent processes it into a user-friendly format and, if required, provides actionable insights or conclusions.
